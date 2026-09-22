@@ -1,0 +1,4 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	22:39:04	Apply changes to my_database	Changes applied	
+0	2	22:39:45	CREATE DATABASE my_database	Error Code: 1007. Can't create database 'my_database'; database exists	0.000 sec
+3	3	22:40:13	CREATE DATABASE my_database1	1 row(s) affected	0.000 sec
