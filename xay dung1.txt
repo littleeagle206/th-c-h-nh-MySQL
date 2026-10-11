@@ -16,3 +16,8 @@
      age INT,
      country VARCHAR(100)
  )	0 row(s) affected	0.015 sec
+18	14:46:33	3	ALTER TABLE Class 
+ DROP COLUMN StartDate,
+ DROP COLUMN Status	0 row(s) affected
+ Records: 0  Duplicates: 0  Warnings: 0	0.016 sec
+19	14:46:46	3	DESCRIBE Class	2 row(s) returned	0.000 sec / 0.000 sec
