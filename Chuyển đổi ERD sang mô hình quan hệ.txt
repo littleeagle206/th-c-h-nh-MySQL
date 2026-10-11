@@ -1,0 +1,17 @@
+Quy tắc chuẩn 4 bước chuyển đổi từ ERD sang Mô hình quan hệ
+Bước 1: Chuyển đổi các thực thể mạnh (Strong Entities)Mỗi thực thể trong ERD trở thành một bảng (Table) trong mô hình quan hệ.Các thuộc tính đơn của thực thể trở thành các cột (Columns) của bảng.Thuộc tính khóa của thực thể trở thành Khóa chính (Primary Key - PK) của bảng.
+
+Bước 2: Xử lý các mối quan hệ (Relationships)Quan hệ 1 - 1 (Một - Một):Lấy khóa chính của một trong hai bảng đưa sang bảng còn lại làm Khóa ngoại (FK) (thường ưu tiên bảng nào có sự tham gia toàn phần / bắt buộc).Quan hệ 1 - n (Một - Nhiều):Lấy khóa chính của bảng phía "1" (bảng cha) đưa sang làm Khóa ngoại (FK) ở bảng phía "n" (bảng con).Quan hệ n - m (Nhiều - Nhiều):Bắt buộc tạo một bảng trung gian mới (Junction Table).Bảng này chứa ít nhất 2 khóa ngoại tham chiếu đến khóa chính của 2 bảng tham gia. Khóa chính của bảng trung gian là khóa tổ hợp của 2 khóa ngoại đó: PK(Khoa_1, Khoa_2). Nếu mối quan hệ có thuộc tính riêng (ví dụ: NgayDangKy, DiemSo), các thuộc tính đó cũng được đặt trong bảng trung gian này.   
+
+Bước 3: Xử lý thuộc tính đa trị (Multivalued Attributes)Thuộc tính đa trị (thuộc tính có thể nhận nhiều giá trị, thường ký hiệu bằng hình elip viền kép trên ERD) vi phạm chuẩn 1NF.   Cách xử lý: Tách thành một bảng mới, gồm:Khóa chính của thực thể ban đầu (đóng vai trò Khóa ngoại - FK).   Cột chứa giá trị của thuộc tính đa trị đó.   Khóa chính của bảng mới là khóa tổ hợp: PK(Khoa_Chinh_Cu, Thuoc_Tinh_Da_Tri).   
+
+Bước 4: Liệt kê lại danh sách các bảng chuẩn hóaBiểu diễn dạng chuẩn: TenBang(KhoaChinh, ThuocTinh1, ThuocTinh2, KhoaNgoai, ...) (trong đó gạch chân khóa chính, in nghiêng hoặc chú thích khóa ngoại).
+
+Ví dụ minh họa thực tế:
+
+Giả sử ERD gồm:
+Thực thể SinhVien: gồm MaSV (khóa chính), HoTen, NgaySinh, và thuộc tính đa trị SoDienThoai.
+Thực thể LopHoc: gồm MaLop (khóa chính), TenLop. Quan hệ SinhVien - LopHoc là 1 - n (Một lớp có nhiều sinh viên).
+Thực thể MonHoc: gồm MaMon (khóa chính), TenMon. Quan hệ SinhVien - MonHoc là n - m (Sinh viên đăng ký môn học, có thuộc tính DiemThi).
+
+Kết quả chuyển đổi sang mô hình quan hệ:LopHoc (MaLop, TenLop)(Khóa chính: MaLop)SinhVien (MaSV, HoTen, NgaySinh, MaLop)(Khóa chính: MaSV; Khóa ngoại: MaLop trỏ về LopHoc(MaLop))SinhVien_DienThoai (MaSV, SoDienThoai)   (Khóa chính tổ hợp: (MaSV, SoDienThoai); Khóa ngoại: MaSV trỏ về SinhVien(MaSV))   DangKyHoc (MaSV, MaMon, DiemThi)   (Khóa chính tổ hợp: (MaSV, MaMon); Khóa ngoại: MaSV trỏ về SinhVien, MaMon trỏ về MonHoc)   MonHoc (MaMon, TenMon)(Khóa chính: MaMon)
