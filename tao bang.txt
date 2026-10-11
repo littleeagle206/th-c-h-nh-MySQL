@@ -1,0 +1,10 @@
+8	14:32:20	3	CREATE DATABASE demo	1 row(s) affected	0.016 sec
+9	14:33:28	3	DROP DATABASE `demo`	0 row(s) affected	0.000 sec
+10	14:33:40	3	create database demo	1 row(s) affected	0.000 sec
+11	14:33:51	3	use demo	0 row(s) affected	0.000 sec
+12	14:34:09	3	create table Student(
+  id int,
+  name varchar(200),
+  age int,
+  country varchar(50)
+ )	0 row(s) affected	0.016 sec
