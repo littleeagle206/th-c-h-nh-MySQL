@@ -1,23 +1,15 @@
-14	14:41:15	3	create database QuanLySinhVien	1 row(s) affected	0.000 sec
-15	14:41:17	3	use QuanLySinhVien	0 row(s) affected	0.000 sec
-16	14:41:33	3	CREATE TABLE Class(
+	#	Time	Action	Message	Duration / Fetch
+3	1	14:52:20	create database demo	1 row(s) affected	0.000 sec
+3	2	14:52:27	use demo	0 row(s) affected	0.000 sec
+3	3	14:52:38	CREATE TABLE Class(
  
           ClassID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  
-           ClassName VARCHAR(60) NOT NULL,
- 
-           StartDate DATETIME NOT NULL,
- 
-           Status BIT
- )	0 row(s) affected	0.015 sec
-17	14:42:00	3	CREATE TABLE Teacher (
-     id INT PRIMARY KEY AUTO_INCREMENT,
-     name VARCHAR(100) NOT NULL,
+           ClassName VARCHAR(60) NOT NULL
+ )	0 row(s) affected	0.016 sec
+3	4	14:52:43	CREATE TABLE Teacher (
+     id INT,
+     name VARCHAR(100),
      age INT,
      country VARCHAR(100)
- )	0 row(s) affected	0.015 sec
-18	14:46:33	3	ALTER TABLE Class 
- DROP COLUMN StartDate,
- DROP COLUMN Status	0 row(s) affected
- Records: 0  Duplicates: 0  Warnings: 0	0.016 sec
-19	14:46:46	3	DESCRIBE Class	2 row(s) returned	0.000 sec / 0.000 sec
+ )	0 row(s) affected	0.016 sec
