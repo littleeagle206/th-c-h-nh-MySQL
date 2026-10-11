@@ -1,0 +1,18 @@
+14	14:41:15	3	create database QuanLySinhVien	1 row(s) affected	0.000 sec
+15	14:41:17	3	use QuanLySinhVien	0 row(s) affected	0.000 sec
+16	14:41:33	3	CREATE TABLE Class(
+ 
+          ClassID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ 
+           ClassName VARCHAR(60) NOT NULL,
+ 
+           StartDate DATETIME NOT NULL,
+ 
+           Status BIT
+ )	0 row(s) affected	0.015 sec
+17	14:42:00	3	CREATE TABLE Teacher (
+     id INT PRIMARY KEY AUTO_INCREMENT,
+     name VARCHAR(100) NOT NULL,
+     age INT,
+     country VARCHAR(100)
+ )	0 row(s) affected	0.015 sec
