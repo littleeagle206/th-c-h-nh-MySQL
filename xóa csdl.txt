@@ -1,0 +1,5 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	13:48:26	CREATE DATABASE thuchanhlsm	1 row(s) affected	0.000 sec
+3	2	13:49:30	CREATE DATABASE thuchanhlsmcodegym	1 row(s) affected	0.000 sec
+3	3	13:49:51	DROP DATABASE `thuchanhlsm`	0 row(s) affected	0.000 sec
+3	4	13:50:38	DROP DATABASE `thuchanhlsmcodegym`	0 row(s) affected	0.016 sec
