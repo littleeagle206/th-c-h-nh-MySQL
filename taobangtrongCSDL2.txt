@@ -1,0 +1,32 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	16:29:47	CREATE DATABASE QuanLyDiemThi	1 row(s) affected	0.000 sec
+3	2	16:29:52	USE QuanLyDiemThi	0 row(s) affected	0.000 sec
+3	3	16:30:00	CREATE TABLE HocSinh(
+  MaHS VARCHAR(20) PRIMARY KEY,
+  TenHS VARCHAR(50),
+  NgaySinh DATETIME,
+  Lop VARCHAR(20),
+  GT VARCHAR(20)
+ )	0 row(s) affected	0.016 sec
+3	4	16:30:05	CREATE TABLE MonHoc(
+  MaMH VARCHAR(20) PRIMARY KEY,
+  TenMH VARCHAR(50),
+  MaGV VARCHAR(20)
+ 
+ )	0 row(s) affected	0.016 sec
+3	5	16:30:10	CREATE TABLE BangDiem(
+  MaHS VARCHAR(20),
+     MaMH VARCHAR(50),
+  DiemThi INT,
+  NgayKT DATETIME,
+  PRIMARY KEY (MaHS, MaMH),
+  FOREIGN KEY (MaHS) REFERENCES HocSinh(MaHS),
+  FOREIGN KEY (MaMH) REFERENCES MonHoc(MaMH)
+ )	0 row(s) affected	0.031 sec
+3	6	16:30:14	CREATE TABLE GiaoVien(
+  MaGV VARCHAR(20) PRIMARY KEY,
+     TenGV VARCHAR(50),
+  SDT VARCHAR(10)
+ )	0 row(s) affected	0.016 sec
+3	7	16:30:22	ALTER TABLE MonHoc ADD CONSTRAINT FK_MaGV FOREIGN KEY (MaGV) REFERENCES GiaoVien(MaGV)	0 row(s) affected
+ Records: 0  Duplicates: 0  Warnings: 0	0.062 sec
