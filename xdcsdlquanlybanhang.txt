@@ -1,0 +1,40 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	08:49:38	CREATE DATABASE QuanLyBanHang	1 row(s) affected	0.000 sec
+3	2	08:49:41	USE QuanLyBanHang	0 row(s) affected	0.000 sec
+3	3	08:49:50	CREATE TABLE Customer (
+     cID INT AUTO_INCREMENT PRIMARY KEY,
+     cName VARCHAR(100) NOT NULL,
+     cAge TINYINT UNSIGNED NULL
+ )	0 row(s) affected	0.015 sec
+3	4	08:49:53	CREATE TABLE `Order` (
+     oID INT AUTO_INCREMENT PRIMARY KEY,
+     cID INT NOT NULL,
+     oDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     oTotalPrice DECIMAL(12, 2) NULL,
+     CONSTRAINT fk_Order_Customer 
+         FOREIGN KEY (cID) 
+         REFERENCES Customer(cID) 
+         ON DELETE RESTRICT 
+         ON UPDATE CASCADE
+ )	0 row(s) affected	0.031 sec
+3	5	08:49:56	CREATE TABLE Product (
+     pID INT AUTO_INCREMENT PRIMARY KEY,
+     pName VARCHAR(150) NOT NULL,
+     pPrice DECIMAL(10, 2) NOT NULL CHECK (pPrice >= 0)
+ )	0 row(s) affected	0.016 sec
+3	6	08:50:01	CREATE TABLE OrderDetail (
+     oID INT NOT NULL,
+     pID INT NOT NULL,
+     odQTY INT NOT NULL CHECK (odQTY > 0),
+     PRIMARY KEY (oID, pID),
+     CONSTRAINT fk_OrderDetail_Order 
+         FOREIGN KEY (oID) 
+         REFERENCES `Order`(oID) 
+         ON DELETE CASCADE 
+         ON UPDATE CASCADE,
+     CONSTRAINT fk_OrderDetail_Product 
+         FOREIGN KEY (pID) 
+         REFERENCES Product(pID) 
+         ON DELETE RESTRICT 
+         ON UPDATE CASCADE
+ )	0 row(s) affected	0.032 sec
