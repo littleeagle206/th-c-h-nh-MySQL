@@ -26,3 +26,24 @@
  GROUP BY S.StudentId, S.StudentName
  HAVING AVG(Mark) >= ALL (SELECT AVG(Mark) FROM Mark GROUP BY Mark.StudentId)
  LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
+3	8	21:33:06	SELECT SubId, SubName, Credit, Status
+ FROM Subject
+ WHERE Credit = (SELECT MAX(Credit) FROM Subject)
+ LIMIT 0, 1000	1 row(s) returned	0.000 sec / 0.000 sec
+3	9	21:33:11	SELECT S.SubId, S.SubName, S.Credit, S.Status, M.Mark
+ FROM Subject S
+ JOIN Mark M ON S.SubId = M.SubId
+ WHERE M.Mark = (SELECT MAX(Mark) FROM Mark)
+ LIMIT 0, 1000	1 row(s) returned	0.000 sec / 0.000 sec
+3	10	21:33:16	SELECT 
+     S.StudentId, 
+     S.StudentName, 
+     S.Address, 
+     S.Phone, 
+     S.ClassId, 
+     AVG(M.Mark) AS DiemTrungBinh
+ FROM Student S
+ LEFT JOIN Mark M ON S.StudentId = M.StudentId
+ GROUP BY S.StudentId, S.StudentName, S.Address, S.Phone, S.ClassId
+ ORDER BY DiemTrungBinh DESC
+ LIMIT 0, 1000	3 row(s) returned	0.000 sec / 0.000 sec
