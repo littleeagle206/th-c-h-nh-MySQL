@@ -1,0 +1,28 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	21:23:56	USE quanlysinhvien	0 row(s) affected	0.000 sec
+3	2	21:27:55	SELECT Address, COUNT(StudentId) AS 'Số lượng học viên'
+ FROM Student
+ GROUP BY Address
+ LIMIT 0, 1000	3 row(s) returned	0.000 sec / 0.000 sec
+3	3	21:27:59	SELECT S.StudentId,S.StudentName, AVG(Mark)
+ FROM Student S join Mark M on S.StudentId = M.StudentId
+ GROUP BY S.StudentId, S.StudentName
+ LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
+3	4	21:28:02	SELECT S.StudentId,S.StudentName, AVG(Mark)
+ FROM Student S join Mark M on S.StudentId = M.StudentId
+ GROUP BY S.StudentId, S.StudentName
+ LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
+3	5	21:28:08	SELECT S.StudentId,S.StudentName, AVG(Mark)
+ FROM Student S join Mark M on S.StudentId = M.StudentId
+ GROUP BY S.StudentId, S.StudentName
+ HAVING AVG(Mark) > 15
+ LIMIT 0, 1000	0 row(s) returned	0.016 sec / 0.000 sec
+3	6	21:28:12	SELECT S.StudentId, S.StudentName, AVG(Mark)
+ FROM Student S join Mark M on S.StudentId = M.StudentId
+ GROUP BY S.StudentId, S.StudentName
+ LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
+3	7	21:28:18	SELECT S.StudentId, S.StudentName, AVG(Mark)
+ FROM Student S join Mark M on S.StudentId = M.StudentId
+ GROUP BY S.StudentId, S.StudentName
+ HAVING AVG(Mark) >= ALL (SELECT AVG(Mark) FROM Mark GROUP BY Mark.StudentId)
+ LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
