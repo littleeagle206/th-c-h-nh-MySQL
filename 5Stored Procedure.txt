@@ -1,0 +1,17 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	14:25:04	CREATE PROCEDURE findAllCustomers()
+ 
+ BEGIN
+ 
+   SELECT * FROM customers;
+ 
+ END	0 row(s) affected	0.000 sec
+3	2	14:25:23	call findAllCustomers()	122 row(s) returned	0.000 sec / 0.000 sec
+3	3	14:26:41	DROP PROCEDURE IF EXISTS `findAllCustomers`	0 row(s) affected	0.000 sec
+3	4	14:26:41	CREATE PROCEDURE findAllCustomers()
+ 
+ BEGIN
+ 
+ SELECT * FROM customers where customerNumber = 175;
+ 
+ END	0 row(s) affected	0.000 sec
