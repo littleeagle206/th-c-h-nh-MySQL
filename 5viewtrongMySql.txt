@@ -1,0 +1,33 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	14:34:09	CREATE VIEW customer_views AS
+ 
+ SELECT customerNumber, customerName, phone
+ 
+ FROM  customers	0 row(s) affected	0.000 sec
+3	2	14:34:21	select * from customer_views
+ LIMIT 0, 1000	122 row(s) returned	0.000 sec / 0.000 sec
+0	3	14:34:37	CREATE OR REPLACE VIEW view_name AS
+ 
+ SELECT column1, column2, ...
+ 
+ FROM table_name	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '...
+ 
+ FROM table_name' at line 3	0.000 sec
+0	4	14:36:30	CREATE OR REPLACE VIEW view_name AS
+ SELECT *
+ FROM table_name	Error Code: 1146. Table 'classicmodels.table_name' doesn't exist	0.000 sec
+0	5	14:36:45	CREATE OR REPLACE VIEW view_name AS
+ SELECT column1, column2
+ FROM table_name	Error Code: 1146. Table 'classicmodels.table_name' doesn't exist	0.000 sec
+3	6	14:37:44	CREATE OR REPLACE VIEW all_customers_view AS
+ SELECT *
+ FROM customers	0 row(s) affected	0.000 sec
+3	7	14:38:08	CREATE OR REPLACE VIEW customer_views AS
+ 
+ SELECT customerNumber, customerName, contactFirstName, contactLastName, phone
+ 
+ FROM customers
+ 
+ WHERE city = 'Nantes'	0 row(s) affected	0.000 sec
+0	8	14:38:21	DROP VIEW view_name	Error Code: 1051. Unknown table 'classicmodels.view_name'	0.000 sec
+3	9	14:39:35	DROP VIEW customer_views	0 row(s) affected	0.000 sec
