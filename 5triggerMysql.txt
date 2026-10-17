@@ -1,0 +1,31 @@
+	#	Time	Action	Message	Duration / Fetch
+3	1	14:43:54	CREATE DATABASE IF NOT EXISTS company	1 row(s) affected	0.000 sec
+3	2	14:43:55	USE company	0 row(s) affected	0.000 sec
+1	3	14:43:58	DROP TABLE IF EXISTS employees	0 row(s) affected, 1 warning(s):
+ 1051 Unknown table 'company.employees'	0.000 sec
+3	4	14:44:07	CREATE TABLE employees (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     name VARCHAR(50) NOT NULL,
+     department VARCHAR(50) NOT NULL,
+     salary DECIMAL(10, 2) NOT NULL
+ )	0 row(s) affected	0.015 sec
+3	5	14:44:19	CREATE TRIGGER update_department
+ BEFORE INSERT ON employees
+ FOR EACH ROW
+ BEGIN
+     IF NEW.salary >= 5000 THEN
+         SET NEW.department = 'Management';
+     ELSEIF NEW.salary >= 3000 THEN
+         SET NEW.department = 'Sales';
+     ELSE
+         SET NEW.department = 'Support';
+     END IF;
+ END	0 row(s) affected	0.000 sec
+3	6	14:44:30	INSERT INTO employees (name, department, salary)
+ VALUES 
+     ('John Doe', 'A', 3500),
+     ('Jane Smith', 'A', 2000),
+     ('David Johnson', 'A', 6000)	3 row(s) affected
+ Records: 3  Duplicates: 0  Warnings: 0	0.000 sec
+3	7	14:44:38	SELECT * FROM employees
+ LIMIT 0, 1000	3 row(s) returned	0.000 sec / 0.000 sec
