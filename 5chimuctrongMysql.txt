@@ -1,0 +1,8 @@
+3	2	14:22:01	EXPLAIN SELECT * FROM customers WHERE customerName = 'Land of Toys Inc.'	1 row(s) returned	0.015 sec / 0.000 sec
+0	3	14:22:06	ALTER TABLE customers ADD INDEX idx_customerName(customerName)	Error Code: 1061. Duplicate key name 'idx_customerName'	0.016 sec
+3	4	14:22:09	EXPLAIN SELECT * FROM customers WHERE customerName = 'Land of Toys Inc.'	1 row(s) returned	0.000 sec / 0.000 sec
+3	5	14:22:12	ALTER TABLE customers ADD INDEX idx_full_name(contactFirstName, contactLastName)	0 row(s) affected
+ Records: 0  Duplicates: 0  Warnings: 0	0.016 sec
+3	6	14:22:16	EXPLAIN SELECT * FROM customers WHERE contactFirstName = 'Jean' OR contactFirstName = 'King'	1 row(s) returned	0.000 sec / 0.000 sec
+3	7	14:22:23	ALTER TABLE customers DROP INDEX idx_full_name	0 row(s) affected
+ Records: 0  Duplicates: 0  Warnings: 0	0.015 sec
